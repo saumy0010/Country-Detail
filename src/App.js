@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {Box} from "@mui/material";
+import NavBar from "./components/appBar/NavBar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {CountryDetails} from "./components/container/CountryDetails";
+import CountryList from "./components/container/CountryList";
 
 function App() {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box>
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route path="/country/:code" element={<CountryDetails />} />
+          <Route path="/" element={<CountryList />} />
+        </Routes>
+
+      </Router>
+
+
+    </Box>
   );
 }
 
