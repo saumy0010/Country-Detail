@@ -5,7 +5,6 @@ import { Button, Grid } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { getCountryByCode } from '../../api/getCountryByCode';
 import { Box, Typography } from '@mui/material'
-import Paper from '@mui/material/Paper';
 import ButtonBase from '@mui/material/ButtonBase';
 
 
@@ -33,7 +32,6 @@ export const CountryDetails = () => {
           borders: item.borders,
         };
       });
-      console.log(data);
 
       setCountry(data[0]);
     });
@@ -48,7 +46,7 @@ export const CountryDetails = () => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1, m: 5, }}>
+      <Box sx={{ flexGrow: 1, m: 5, pb: 10}}>
 
         <Grid container spacing={2} sx={{ display: 'inline-flex', columnGap: 3 }}>
 
@@ -104,35 +102,51 @@ export const CountryDetails = () => {
               {country.name}
             </Typography>
             <Typography variant="h6" component="h2">
-              Native Name: {country.nativeName && country.nativeName[0].common}
+             <span style={{ fontWeight: 'bold'}}>Native Name: </span> {country.nativeName && country.nativeName[0].common}
             </Typography>
             <Typography variant="h6" component="h2">
-              Population: {country.population}
+             <span style={{ fontWeight: 'bold'}}>Population: </span>{country.population}
             </Typography>
             <Typography variant="h6" component="h2">
-              Region: {country.region}
+            <span style={{ fontWeight: 'bold'}}>Region:</span> {country.region}
             </Typography>
             <Typography variant="h6" component="h2">
-              Sub Region: {country.subRegion}
+            <span style={{ fontWeight: 'bold'}}>Sub Region:</span> {country.subRegion}
             </Typography>
             <Typography variant="h6" component="h2">
-              Capital: {country.capital}
+            <span style={{ fontWeight: 'bold'}}>Capital:</span> {country.capital}
             </Typography>
             <Typography variant="h6" component="h2">
-              Borders: {country.borders && country.borders.join(', ')}
+            <span style={{ fontWeight: 'bold'}}>Borders:</span>
+                {country.borders && country.borders.map((border) => {
+                  return (
+                    <Button sx={{
+                      color: 'black',
+                      border: '2px solid #4CAF50',
+                      borderRadius: '4px',
+                      padding: '4px 24px',
+                      textAlign: 'center',
+                      textDecoration: 'none',
+                      cursor: 'pointer',
+                      m: 1,
+                    }} onClick={() => navigate(`/country/${border}`)}>{border}</Button>
+                  )
+                })
+                }
+              
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={10} md={5} lg={3} sx={{ mt: 18 }}>
             <Typography variant="h6" component="h2">
 
-              Top Level Domain: {country.tld && country.tld[0]}
+            <span style={{ fontWeight: 'bold'}}>Top Level Domain:</span> {country.tld && country.tld[0]}
             </Typography>
             <Typography variant="h6" component="h2">
-              Currencies: {country.currencies && country.currencies.map((currency) => currency.name).join(', ')}
+            <span style={{ fontWeight: 'bold'}}> Currencies: </span>{country.currencies && country.currencies.map((currency) => currency.name).join(', ')}
             </Typography>
             <Typography variant="h6" component="h2">
-              Languages: {country.languages &&
+            <span style={{ fontWeight: 'bold'}}> Languages: </span> {country.languages &&
                 country.languages.map((language) => language).join(', ')}
             </Typography>
 

@@ -15,7 +15,7 @@ const CardContainer = (props) => {
     
 
   return (
-    <Card sx={{ maxWidth: 300, minWidth: 280 }}>
+    <Card sx={{maxHeight: 400, maxWidth: 400, minHeight: 230, minWidth: 230}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -23,7 +23,7 @@ const CardContainer = (props) => {
           image={imgUrl}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom sx={{fontSize:{sm:"14px", xs: '12px', md: "16px", lg: "18px" }}} component="div">
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">

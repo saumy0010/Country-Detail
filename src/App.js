@@ -9,7 +9,7 @@ function App() {
 
 
   return (
-    <Box>
+    <Box height={'100vh'}>
       <Router>
         <NavBar />
         <Routes>
